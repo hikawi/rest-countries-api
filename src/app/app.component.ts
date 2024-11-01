@@ -1,6 +1,5 @@
 import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { CountriesService } from './countries.service';
 import { ThemeService } from './theme.service';
 
 @Component({
@@ -13,6 +12,5 @@ import { ThemeService } from './theme.service';
 export class AppComponent {
 
   theme = inject(ThemeService);
-  countries = inject(CountriesService);
 
 }

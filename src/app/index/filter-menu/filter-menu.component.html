@@ -1,0 +1,55 @@
+<div
+  role="menu"
+  tabindex="0"
+  aria-label="Filter by region"
+  [attr.aria-expanded]="menuOpen"
+  (click)="handleClick()"
+  (keydown)="handleKeydown($event)"
+  class="rounded-slight shadowed relative flex h-12 w-[12.5rem] cursor-pointer items-center justify-between bg-white px-6 text-xs hover:bg-slate-200 focus:bg-slate-200 dark:bg-dark-blue dark:hover:bg-slate-700 dark:focus:bg-slate-700 lg:h-14 lg:text-sm"
+  #filterMenu
+>
+  <span>
+    @if (filter === "") {
+      Filter by region
+    } @else {
+      Filter: {{ filter }}
+    }
+  </span>
+
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 10 10"
+    class="size-2.5 fill-black dark:fill-white lg:size-3"
+    fill="none"
+  >
+    <path
+      fill-rule="evenodd"
+      clip-rule="evenodd"
+      d="M7.875 2.875L5 5.75L2.125 2.875L1.25 3.75L5 7.5L8.75 3.75L7.875 2.875Z"
+    />
+  </svg>
+
+  @if (menuOpen) {
+    <ul
+      class="absolute left-0 top-full w-full translate-y-1 bg-white py-2 dark:bg-dark-blue"
+      tabindex="0"
+      #ul
+    >
+      @for (
+        region of ["Africa", "America", "Asia", "Europe", "Oceania", "None"];
+        track region
+      ) {
+        <li
+          role="menuitem"
+          [attr.aria-label]="region"
+          tabindex="0"
+          class="px-6 py-2 hover:bg-slate-200 focus:bg-slate-200 dark:hover:bg-slate-700 dark:focus:bg-slate-700"
+          (click)="setFilter(region)"
+          (keydown)="handleKeydownOption($event, region)"
+        >
+          {{ region }}
+        </li>
+      }
+    </ul>
+  }
+</div>

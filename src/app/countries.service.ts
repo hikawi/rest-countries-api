@@ -1,36 +1,25 @@
-import { Injectable } from '@angular/core';
-import dataFile from "../data.json";
-
-type Country = {
-  name: string;
-  nativeName: string[];
-  population: number;
-  region: string;
-  subregion: string;
-  capital: string[];
-  topLevelDomain: string[];
-  currencies: string[];
-  languages: string[];
-  bordering: string[];
-  flags: {
-    image: string;
-    alt: string;
-  };
-}
+import { Injectable, signal } from '@angular/core';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CountriesService {
 
-  countries: Record<string, typeof import("../data.json")[0]> = {};
-  cca2s: string[] = []
+  countries: Record<string, any> = {};
+  cca2s = new Set<string>();
+  ready = signal(true);
+
+  async requestData() {
+    const json = await fetch("https://restcountries.com/v3.1/all").then(res => res.json());
+    for (const node of json) {
+      this.cca2s.add(node.name.common);
+      this.countries[node.name.common] = node;
+    }
+    this.ready.set(true);
+  }
 
   constructor() {
-    for (const data of dataFile) {
-      this.countries[data.cca2] = data;
-      this.cca2s.push(data.cca2);
-    }
+    this.requestData();
   }
 
 }
