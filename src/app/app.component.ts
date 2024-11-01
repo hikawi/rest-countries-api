@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+import { CountriesService } from './countries.service';
+import { ThemeService } from './theme.service';
 
 @Component({
   selector: 'app-root',
@@ -9,5 +11,8 @@ import { RouterOutlet } from '@angular/router';
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  title = 'rest-countries-api';
+
+  theme = inject(ThemeService);
+  countries = inject(CountriesService);
+
 }
