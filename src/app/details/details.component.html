@@ -1,1 +1,99 @@
-<p>details works! {{ cca2 }}</p>
+<main class="flex flex-col gap-16 px-7 py-10 lg:gap-20 lg:p-20">
+  <button
+    class="shadowed flex h-8 w-[6.5rem] flex-row items-center gap-2 rounded-sm bg-white px-6 hover:bg-slate-200 dark:bg-dark-blue dark:hover:bg-slate-700 lg:h-10 lg:w-[8.5rem] lg:px-8"
+    (click)="goBack()"
+  >
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 18 18"
+      fill="none"
+      class="size-[1.125rem] fill-[#111517] dark:fill-white lg:size-5"
+      aria-hidden="true"
+    >
+      <path
+        fill-rule="evenodd"
+        clip-rule="evenodd"
+        d="M5.81802 3.6967L6.87868 4.75736L3.3785 8.25754H16.7428L16.7428 9.74246H3.3785L6.87868 13.2426L5.81802 14.3033L0.514719 9L5.81802 3.6967Z"
+      />
+    </svg>
+
+    Back
+  </button>
+
+  <div
+    class="grid grid-cols-1 gap-12 lg:grid-cols-2 lg:grid-rows-1 lg:justify-between"
+  >
+    <img
+      [src]="countries.get(cca3).flags.png"
+      [alt]="countries.get(cca3).flags.alt"
+      class="w-full object-cover"
+    />
+
+    <div class="flex flex-col justify-between gap-8 lg:gap-16">
+      <div class="flex flex-col gap-4 lg:gap-6">
+        <h2 class="text-[1.375rem] font-extrabold lg:text-[2rem]">
+          {{ countries.get(cca3).name.common }}
+        </h2>
+
+        <div class="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:grid-rows-1">
+          <ul class="flex flex-col gap-2 font-light">
+            <li>
+              <span class="font-semibold">Native Name:</span>
+              {{ nativeNames | listToString }}
+            </li>
+            <li>
+              <span class="font-semibold">Population:</span>
+              {{ countries.get(cca3).population | number: "1.0-0" }}
+            </li>
+            <li>
+              <span class="font-semibold">Region:</span>
+              {{ countries.get(cca3).region }}
+            </li>
+            <li>
+              <span class="font-semibold">Sub Region:</span>
+              {{ countries.get(cca3).subregion }}
+            </li>
+            <li>
+              <span class="font-semibold">Capitals:</span>
+              {{ countries.get(cca3).capital | listToString }}
+            </li>
+          </ul>
+
+          <ul class="flex flex-col gap-2 font-light">
+            <li>
+              <span class="font-semibold">Top Level Domains:</span>
+              {{ countries.get(cca3).tld | listToString }}
+            </li>
+            <li>
+              <span class="font-semibold">Currencies:</span>
+              {{ currencies | listToString }}
+            </li>
+            <li>
+              <span class="font-semibold">Languages:</span>
+              {{ languages | listToString }}
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flex flex-col gap-4 lg:flex-row">
+        <span class="font-semibold">Border Countries:</span>
+
+        @if (borderingIds.length === 0) {
+          <span>N/A</span>
+        } @else {
+          <div class="flex flex-row flex-wrap gap-3">
+            @for (id of borderingIds; track id) {
+              <button
+                class="shadowed h-7 w-fit min-w-24 rounded-sm bg-white px-4 hover:bg-slate-200 dark:bg-dark-blue dark:hover:bg-slate-700"
+                (click)="goToCountry(id)"
+              >
+                {{ borderingNames[id] }}
+              </button>
+            }
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+</main>

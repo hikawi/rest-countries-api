@@ -4,11 +4,11 @@ import { IndexComponent } from './index/index.component';
 
 export const routes: Routes = [
   {
+    path: ":id",
+    component: DetailsComponent,
+  },
+  {
     path: "",
     component: IndexComponent,
   },
-  {
-    path: ":id",
-    component: DetailsComponent,
-  }
 ];

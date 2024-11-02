@@ -1,27 +1,68 @@
-# RestCountriesApi
+# Frontend Mentor - REST Countries API with color theme switcher solution
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 18.2.10.
+This is a solution to the [REST Countries API with color theme switcher challenge on Frontend Mentor](https://www.frontendmentor.io/challenges/rest-countries-api-with-color-theme-switcher-5cacc469fec04111f7b848ca). Frontend Mentor challenges help you improve your coding skills by building realistic projects.
 
-## Development server
+<div align="center">
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+![GitHub top language](https://img.shields.io/github/languages/top/hikawi/rest-countries-api)
+![Static Badge](https://img.shields.io/badge/framework-angular-purple)
 
-## Code scaffolding
+</div>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Table of contents
 
-## Build
+- [Frontend Mentor - REST Countries API with color theme switcher solution](#frontend-mentor---rest-countries-api-with-color-theme-switcher-solution)
+  - [Table of contents](#table-of-contents)
+  - [Overview](#overview)
+    - [The challenge](#the-challenge)
+    - [Screenshot](#screenshot)
+    - [Links](#links)
+  - [My process](#my-process)
+    - [Built with](#built-with)
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+## Overview
 
-## Running unit tests
+### The challenge
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+Users should be able to:
 
-## Running end-to-end tests
+- See all countries from the API on the homepage
+- Search for a country using an `input` field
+- Filter countries by region
+- Click on a country to see more detailed information on a separate page
+- Click through to the border countries on the detail page
+- Toggle the color scheme between light and dark mode _(optional)_
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+### Screenshot
 
-## Further help
+<details>
+<summary>Desktop</summary>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.dev/tools/cli) page.
+![Desktop](./screenshot-desktop.jpeg)
+
+</details>
+
+<details>
+<summary>Tablet</summary>
+
+![Tablet](./screenshot-tablet.jpeg)
+
+</details>
+
+<details>
+<summary>Mobile</summary>
+
+![Mobile](./screenshot-mobile.jpeg)
+
+</details>
+
+### Links
+
+- [Live Site URL](https://rest-countries-api.frilly.dev/)
+
+## My process
+
+### Built with
+
+- [Angular 18](https://angular.dev/)
+- [Tailwind CSS](https://tailwindcss.com/)

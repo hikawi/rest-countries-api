@@ -6,16 +6,20 @@ import { Injectable, signal } from '@angular/core';
 export class CountriesService {
 
   countries: Record<string, any> = {};
-  cca2s = new Set<string>();
+  cca3s = new Set<string>();
   ready = signal(true);
 
   async requestData() {
     const json = await fetch("https://restcountries.com/v3.1/all").then(res => res.json());
     for (const node of json) {
-      this.cca2s.add(node.name.common);
-      this.countries[node.name.common] = node;
+      this.cca3s.add(node.cca3.toLowerCase());
+      this.countries[node.cca3.toLowerCase()] = node;
     }
     this.ready.set(true);
+  }
+
+  get(code: string): any {
+    return this.countries[code.toLowerCase()];
   }
 
   constructor() {

@@ -8,7 +8,7 @@ export class ListToStringPipe implements PipeTransform {
 
   transform(value: string[] | undefined): string {
     if (!value || value.length === 0) {
-      return "None...";
+      return "N/A";
     } else if (value.length === 1) {
       return value[0];
     } else if (value.length === 2) {
