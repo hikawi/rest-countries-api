@@ -1,5 +1,5 @@
-import { DecimalPipe } from '@angular/common';
-import { Component, inject } from '@angular/core';
+import { DecimalPipe, isPlatformBrowser } from '@angular/common';
+import { Component, inject, PLATFORM_ID } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CountriesService } from '../countries.service';
 import { ListToStringPipe } from '../pipes/list-to-string.pipe';
@@ -15,6 +15,7 @@ export class DetailsComponent {
 
   cca3: string;
   countries = inject(CountriesService);
+  platformId = inject(PLATFORM_ID);
 
   nativeNames: string[];
   currencies: string[];
@@ -57,7 +58,9 @@ export class DetailsComponent {
   }
 
   ngOnInit() {
-    document.title = this.countries.get(this.cca3).name.common;
+    if (isPlatformBrowser(this.platformId)) {
+      document.title = this.countries.get(this.cca3).name.common;
+    }
   }
 
   goBack() {

@@ -1,4 +1,5 @@
-import { Component, inject, signal } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
+import { Component, inject, PLATFORM_ID, signal } from '@angular/core';
 import { CountriesService } from '../countries.service';
 import { CountryViewComponent } from "./country-view/country-view.component";
 import { FilterMenuComponent } from "./filter-menu/filter-menu.component";
@@ -16,13 +17,16 @@ export class IndexComponent {
   search = signal("");
 
   countries = inject(CountriesService);
+  platformId = inject(PLATFORM_ID);
 
   searchChange(e: Event) {
     this.search.set((e.target as HTMLInputElement).value);
   }
 
   ngOnInit() {
-    document.title = "All Countries";
+    if (isPlatformBrowser(this.platformId)) {
+      document.title = "All Countries";
+    }
   }
 
 }
